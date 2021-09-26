@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto&display=swap');
+
+body {
+  background-color: seagreen;
+}
+
+.div1 {
+  width: 30%;
+  height: auto;
+  padding: 40px;
+  color:cadetblue;
+  background-color: darkslategrey;
+  border: 1px solid;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 4em;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+}
