@@ -153,6 +153,11 @@ img {
   width: 410;
 }
 
+.grid img {
+  border-radius: 10px;
+  margin-bottom: 100px; 
+}
+
 /* end tracy added */
 
 /* Stats */
