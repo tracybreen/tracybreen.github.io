@@ -3,7 +3,7 @@
 :root {   /* here we will define custom properties aka variables (global scope in this case) so we can use them anywhere -- like maybe a color we're going to use all over the project */
   --primary-color: #2E8B57;
   --secondary-color: #1c3fa8;
-  --dark-color: #002240;
+  --dark-color: darkslategray;
   --light-color: #f4f4f4;
   background-color: cadetblue;
 }
@@ -42,6 +42,7 @@ p {
 
 img {
   width: 100%;   /* this prevents an image from bursting out of its container even if it's larger than the container, it'll just take 100% of the container */
+  
 }
 
 .navbar {
@@ -81,7 +82,7 @@ img {
 }
 
 .showcase p {
-  margin: 20px 0;
+  margin: 20px 10px;
 }
 
 .showcase .grid {
@@ -90,29 +91,28 @@ img {
   gap: 30px;
 }
 
-.showcase-form {
-  position: relative; /* relative because we're going to want to add a top property */
-  top: 60px;
-  height: 350px;
-  width: 400px;
+/*.showcase-form {
+  position: absolute;
+  height: 330px;
+  width: 440px;
   padding: 40px;
-  z-index: 100;   /*makes sure this is alwyas in front */
+  z-index: 100;
   justify-self: flex-end;
-}
+} */
 
-.showcase-form .form-control { /* reminder: form-control wraps the inputs */
-margin: 30px 0; /*adds 30px margin top and bottom, 0 margin left and right */
-}
+/* .showcase-form .form-control { /* reminder: form-control wraps the inputs */
+/*margin: 30px 0; *//*adds 30px margin top and bottom, 0 margin left and right */ /*
+}  */
 
-.showcase-form input[type='text'],
-.showcase-form input[type='email'] { /* specifying these bc we don't want these styles to apply to the submit button */
+/* .showcase-form input[type='text'],
+.showcase-form input[type='email'] {
   border: 0;
   border-bottom: 1px solid cadetblue;
-  width: 100%; /* this makes that underline go all the way across which I don't love so maybe we change this later */
+  width: 100%;
   background-color: darkslategray;
-  padding: 3px; /* moves the placeholder text over just a pinch -- somehow makes it look way nicer*/
+  padding: 3px;
   font-size: 16px;
-}
+} */
 
 .showcase-form input:focus {
   outline: none; /* this stops the weird outline from appearing when you click on one of these inputs */
@@ -132,6 +132,28 @@ margin: 30px 0; /*adds 30px margin top and bottom, 0 margin left and right */
   -moz-transform: skewY(-3deg);
   -ms-transform: skewY(-3deg);
 }
+
+/* tracy added this */
+
+.showcase-pic {
+  position: relative; /* relative because we're going to want to add a top property */
+  border-radius: 10px;
+  height: 320px;
+  width: 420px;
+  padding: 20px;
+  z-index: 100;   /*makes sure this is alwyas in front */
+  justify-self: flex-end;
+  background-color: var(--dark-color)
+}
+
+.radiusten {
+  border-radius: 10px;
+  position: relative;
+  height: 310;
+  width: 410;
+}
+
+/* end tracy added */
 
 /* Stats */
 .stats {
