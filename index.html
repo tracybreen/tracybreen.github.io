@@ -1,26 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracy Breen</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- this is for the font aawesome fonts-->
+  <link rel="stylesheet" href="styles.css">
+  <title>Tracy Breen | Web Developer</title>
 </head>
 <body>
-    <div class="div1">
-    <h1>Tracy Breen</h1>
-    <h2>Full-Stack Web Developer</h2>
+  <!-- NAvbar -->
+  <div class="navbar"> <!-- will hold logo (h1) and menu)-->
+    <div class="container flex"> <!-- we wrap in a container so that on large screens the logo will stop growing along with it at a certain point--> <!-- the "utility class" of flex makes everything inside this container flexbox items-->
+      <h1 class="logo">Tracy Breen | Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="projects.html">Projects</a></li> <!-- better make yourself a projeccts.html page now! -->
+        </ul>
+      </nav>
     </div>
+  </div>
+
+  <!-- Showcase -->
+  <section class="showcase">
+    <div class="container grid"><!-- this adds BOTH classes and even if we have different areas with grids we could specifically edit the showcase grid for example -->
+      <div class="showcase-text">
+        <h1>can has fancy web design?</h1>
+        <p>all the fancies. also cats. lots of cool stuff you haven't even thought about yet, but will find you need desperately at some inopportune moment. many other things. things galore. perhaps a wobble wedge or even a discarded left sock. it's here, if you only care to look!</p>
+        <a href="history.html" class="btn btn-outline">History</a>
+      </div>
+      <div class="showcase-form card">
+        <h2>Request a Demo</h2>
+        <form>
+          <div class="form-control">
+            <input type="text" name="name" placeholder="Name" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="company" placeholder="Company Name" required>
+          </div>
+          <div class="form-control">
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <input type="submit" class="btn btn-primary">
+        </form>
+      </div>
+    </div> 
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <h3 class="stats-heading text-center my-1">
+        hey so just FYI we have a few classes here -- stats-heading, text-center, and my-1 (which is of course the margin for the y axis duh)
+      </h3>
+
+      <div class="grid grid-3 text-center my-4">
+        <div>
+          <i class="fas fa-server fa-3x"></i> <!-- these are font awesome classes inside an icon tag -->
+          <h3>big number</h3>
+          <p class="text-secondary">Deployments</p>
+        </div>
+        <div>
+          <i class="fas fa-upload fa-3x"></i>
+          <h3>terabytes</h3>
+          <p class="text-secondary">Published</p>
+        </div>
+        <div>
+          <i class="fas fa-project-diagram fa-3x"></i>
+          <h3>also big #</h3>
+          <p class="text-secondary">Projects</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cli --> <!-- this stands for Command Line Interface -->
+  <section class="cli">
+    <div class="container grid"> <!-- using grid instead of flexbox so that we can have something span multiple columns and/or rows -->
+      <img src="random-images/cat-transparent.png" alt="">
+      <!--<img src="images/cli.png" alt=""> --><!-- later when you're wondering why the background color won't change, please note to self it's because that whole thing is an IMAGE, you muppet, so you're not going to suddenly be able to change the background color inside of an ALREADY COMPLETE IMAGE you goose. Next time don't spend 20mins trying to fix this. SHAME!-->
+      <div class="card">
+        <h3>Easy to use, cross-platform CLI</h3>
+      </div>
+      <div class="card">
+        <h3>Deploy in seconds</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cloud -->
+  <section class="cloud bg-primary my-2 py-2">
+    <div class="container grid"> 
+      <div class="text-center">
+        <h2 class="lg">Extreme Cloud Hosting</h2> <!-- making sizing classes (in this case, large) -->
+        <p class="lead my-1">Cloud hosting like you've never seen. Fast, efficient, and scalable.</p>
+        <a href="projects.html" class="btn btn-dark">Projects</a>
+      </div>
+      <img src=images/cloud.png alt=""> <!-- we have a container with a grid , so the div is the first item on the grid and the image is the second item-->
+    </div>
+  </section>
+
+  <section class="languages">
+    <h2 class="md text-center my-2">
+      Supported Languages
+    </h2>
+    <div class="container flex">
+      <div class="card">
+        <h4>Node.js</h4>
+        <img src="images/logos/node.png" alt="">
+      </div>
+      <div class="card">
+        <h4>C#</h4>
+        <img src="images/logos/csharp.png" alt="">
+      </div>
+      <div class="card">
+        <h4>Ruby</h4>
+        <img src="images/logos/ruby.png" alt="">
+      </div>
+      <div class="card">
+        <h4>PHP</h4>
+        <img src="images/logos/php.png" alt="">
+      </div>
+      <div class="card">
+        <h4>Scala</h4>
+        <img src="images/logos/scala.png" alt="">
+      </div>
+      <div class="card">
+        <h4>Clojure</h4>
+        <img src="images/logos/clojure.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark py-5">
+    <div class="container grid grid-3">
+      <div>
+        <h1>iamtracybreen
+        </h1>
+        <p>Copyright &copy; 2021</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+      <div class="social">
+        <a href="#"><i class="fab fa-github fa-2x"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
-
-
-
-
-<!--
-<html>
-    <h1 style="color:rebeccapurple">Tracy's Portfolio-in-Progress</h1>
-    <img src="tracyknitting.jpg"/>
-</html>
--->

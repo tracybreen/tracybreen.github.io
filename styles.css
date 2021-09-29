@@ -1,24 +1,416 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root {   /* here we will define custom properties aka variables (global scope in this case) so we can use them anywhere -- like maybe a color we're going to use all over the project */
+  --primary-color: #2E8B57;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  background-color: cadetblue;
+}
+
+* {
+  box-sizing: border-box;  /* border-box allows adding padding and borders etc without adding to the width of an element*/
+  padding: 0;
+  margin: 0; /*we zero these out because the browser otherwise adds default margin and padding, so this gives us a clean slate to work with */
+}
+/* the asterisk is the universal selector -- so it will style all elements (presumably anything styled individually will override this but all items will be automatically styled this way) */
 
 body {
-  background-color: seagreen;
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  line-height: 1.6; /* this spreads things out a bit */
 }
 
-.div1 {
-  width: 30%;
-  height: auto;
+ul {
+  list-style-type: none; /* prevents automatic bullet points etc */
+}
+
+a {   /* styles all anchors (usually links) */
+  text-decoration: none; /* gets rid of link underlines */
+  color: #333; /* gets rid of the link color */
+}
+
+h1, h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0; /* apparently we don't need all 4 sides, just using 2 will mean top/bottom and right/left in that order */
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;   /* this prevents an image from bursting out of its container even if it's larger than the container, it'll just take 100% of the container */
+}
+
+.navbar {
+  background-color: var(--primary-color);
+  color: #fff; /* text color -- it won't change yet for the links because we made those declarations for <a> tags but we'll fix that later */
+  height: 70px;  /* currently things are spilling out of the navbar, but later we're going to align things horizontally */
+}
+
+.navbar ul {   /* all unordered list items in the navbar */
+  display: flex;
+}
+
+.navbar a {   /* all links in the navbar */
+  color: white;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.navbar a:hover {   /* navbar links in hover state */
+  border-bottom: 2px white solid;
+}
+
+.navbar .flex {
+  justify-content: space-between; /* if flex is in the navbar, then space-between, otherwise center */
+}
+
+/*Showcase*/
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: white;
+  position: relative;
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+
+.showcase p {
+  margin: 20px 0;
+}
+
+.showcase .grid {
+  overflow: visible; /* stops the scrollbar thing from appearing when something inside the container is bigger than the container */
+  grid-template-columns: 55% 45%;
+  gap: 30px;
+}
+
+.showcase-form {
+  position: relative; /* relative because we're going to want to add a top property */
+  top: 60px;
+  height: 350px;
+  width: 400px;
   padding: 40px;
-  color:cadetblue;
-  background-color: darkslategrey;
-  border: 1px solid;
+  z-index: 100;   /*makes sure this is alwyas in front */
+  justify-self: flex-end;
 }
 
-h1 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 4em;
+.showcase-form .form-control { /* reminder: form-control wraps the inputs */
+margin: 30px 0; /*adds 30px margin top and bottom, 0 margin left and right */
 }
 
-h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2em;
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] { /* specifying these bc we don't want these styles to apply to the submit button */
+  border: 0;
+  border-bottom: 1px solid cadetblue;
+  width: 100%; /* this makes that underline go all the way across which I don't love so maybe we change this later */
+  background-color: darkslategray;
+  padding: 3px; /* moves the placeholder text over just a pinch -- somehow makes it look way nicer*/
+  font-size: 16px;
+}
+
+.showcase-form input:focus {
+  outline: none; /* this stops the weird outline from appearing when you click on one of these inputs */
+}
+
+.showcase::before, /* these are pseudo-selectors */
+.showcase::after {
+  content: ''; /* content property is necessary for before or after thingies */
+  position: absolute; /* absolute within the relative of showcase */
+  height: 100px;
+  bottom: -70px; /* below the bottom of the container so we use a negative */
+  right: 0;
+  left:0;
+  background: cadetblue;
+  transform: skewY(-3deg);
+  -webkit-transform: skewY(-3deg); /* not sure if we still need these but just in case, we're making sure this transform will work on all browsers. */
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg);
+}
+
+/* Stats */
+.stats {
+  padding-top: 100px; /* pushes the stats content down below the transformy skewy diagonal jawn */
+}
+
+.stats-heading.my-1 {
+  max-width: 500px;
+  margin: auto;  /* PROBLEM - why isn't it centering? */ /*ANSWER? -- i was using just the stats-heading selector, but my-1 is defined later and therefore would have overridden i guess? -- i didn't want to create a separate utilies.css file so i tried specifying that only things with BOTH of these selectors would be affected. might have to create a separate stats-heading instruction later but not sure */
+}
+
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Cli */
+.cli .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr); /* before we do anything further, we have 2 rows and 3 columns. all of the elements are on the first row but there is an extra row we can't see yet */ 
+}
+
+.cli .grid > *:first-child { /*anything that is the first child of the cli grid will have these qualities */
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+/* tracy added this*/
+/* Projects */
+.projects {
+  padding-top: 100px;
+}
+
+.projects .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr); /* before we do anything further, we have 2 rows and 3 columns. all of the elements are on the first row but there is an extra row we can't see yet */ 
+}
+
+.projects .grid > *:first-child { /*anything that is the first child of the cli grid will have these qualities */
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+/* end tracy added */
+
+/* Cloud */
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/* Languages */
+.languages .flex {
+  flex-wrap: wrap;
+}
+
+.languages .card {
+  text-align: center;
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease-in; /* this makes the bouncy card situation a little nicer to look at -- it eases in to the transition over 2/10ths of a second. */
+}
+
+.languages .card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.languages .card:hover {
+  transform: translateY(-15px); /* makes the little cards bounce up a tiny bit when you hover over them  ... but it's a little too abrupt so we'll go back up a few lines to .languages .card and add a transition ^^ */
+}
+
+/* Footer */
+.footer .social a {
+  margin: 0 10px;
+}
+
+/*Utilities*/
+.container {
+  max-width: 1100px;
+  margin: 0 auto; /* zero on top and bottom, auto on left and right - -this paired with the max-width above will make it so if the screen gets bigger than 1100px, the contents will stay a little closer to the middle and not be all the way at the far edges */
+  overflow: auto; /* fixes the gap at the top of the screen (which was created because even though we don't have any <h1> tags yet, we have styled for them to have 10px of padding -- so the browser is leavign room for an h1 I guess */
+  padding: 0 40px; /* starts it just a bit away from the edge of the screen */
+}
+
+.card {
+  background-color: darkslategray;
+  color: cadetblue;
+  border-radius: 10px; /* curves edges */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2); /* horizontal offset 0, vertical offset 3px; 10px blur; rgba color (red, green, blue, alpha value (transparency) */
+  padding: 20px;
+  margin: 10px;
+}
+
+.btn {
+  display: inline-block; /*default for links and buttons is inline but we want inline block */
+  padding: 10px 30px;
+  cursor: pointer; /* changes the curser to a clicky finger on hover -- for ALL links and buttons */
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px white solid;
+}
+
+.btn:hover {
+  transform: scale(0.98); /* makes buttons get just a little smaller when you hover */
+}
+
+/* Backgrounds & Colored Buttons */
+.bg-primary,
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.bg-secondary,
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.bg-dark,
+.btn-dark {
+  background-color: var(--dark-color);
+  color: white;
+}
+
+.bg-light,
+.btn-light {
+  background-color: var(--light-color);
+  color: darkslategray;
+}
+
+.bg-primary,  /* we added this section because the links were showing up super dark so we are specifying that anchor tags in these sections (note the omission of the bg-light / btn-light) must be white */
+.btn-primary a,
+.bg-secondary a,
+.btn-secondary a,
+.bg-dark a,
+.btn-dark a {
+  color: #fff;
+}
+
+/* Text Sizes */
+
+.lead { /* paragraphs etc */
+  font-size: 20px;
+}
+
+.sm {
+  font-size: 1rem;
+}
+
+.md {
+  font-size: 2rem;
+}
+
+.lg {
+  font-size: 3rem;
+}
+
+.xl {
+  font-size: 4rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: center; /*always pertains to main axis -- if we were using flex-direction: column then the main axis would be a column */
+  /* also we will use space-between -- but we don't want it everywhere - just for the navbar, so we'll do that separately. */
+  align-items: center;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* adds space between grid columns */
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* adding this makes the grid take up the whole container (which is the 400px showcase jawn from before) so that the form and the showcase text won't be smooshed up top  --- it didn't do it before because we didn't have a height listed  for the container */
+}
+
+.grid-3 { /* this is so the grid for the stats is 3 columns instead of 2 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; /* adds space between grid columns */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Margin */
+.my-1 {
+  margin: 1rem 0; /* top and bottom margins of 1rem, right and left zero ---- rem is a multiplier of the root element's font size (html default is 16px unless you have actively changed it) */
+} /* with all of this base stuff, we're pretty much creating a framework like bootstrap for ourselves */
+
+.my-2 {
+  margin: 1.5rem 0;
+}
+
+.my-3 {
+  margin: 2rem 0;
+}
+
+.my-4 {
+  margin: 3rem 0;
+}
+
+.my-5 {
+  margin: 4rem 0;
+}
+
+/* below we're building a framework for places that need all-around margins, not just the y-axis margins */
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 1.5rem;
+}
+
+.m-3 {
+  margin: 2rem;
+}
+
+.m-4 {
+  margin: 3rem;
+}
+
+.m-5 {
+  margin: 4rem;
+}
+
+/* Padding */
+.py-1 {
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 1.5rem 0;
+}
+
+.py-3 {
+  padding: 2rem 0;
+}
+
+.py-4 {
+  padding: 3rem 0;
+}
+
+.py-5 {
+  padding: 4rem 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 2rem;
+}
+
+.p-4 {
+  padding: 3rem;
+}
+
+.p-5 {
+  padding: 4rem;
 }
