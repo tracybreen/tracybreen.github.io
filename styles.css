@@ -139,7 +139,7 @@ img {
   position: relative; /* relative because we're going to want to add a top property */
   border-radius: 10px;
   height: 320px;
-  width: 420px;
+  width: 320px;
   padding: 20px;
   z-index: 100;   /*makes sure this is alwyas in front */
   justify-self: flex-end;
