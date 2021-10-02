@@ -5,7 +5,9 @@
   --secondary-color: #1c3fa8;
   --dark-color: darkslategray;
   --light-color: #f4f4f4;
-  background-color: cadetblue;
+  --background-color: cadetblue;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
 }
 
 * {
@@ -43,6 +45,13 @@ p {
 img {
   width: 100%;   /* this prevents an image from bursting out of its container even if it's larger than the container, it'll just take 100% of the container */
   
+}
+
+code, 
+pre {
+  background: #333;
+  color: #fff;
+  padding: 10px;
 }
 
 .navbar {
@@ -89,6 +98,10 @@ img {
   overflow: visible; /* stops the scrollbar thing from appearing when something inside the container is bigger than the container */
   grid-template-columns: 55% 45%;
   gap: 30px;
+}
+
+.showcase-text {
+  animation: slideInFromLeft 1s ease-in;
 }
 
 /*.showcase-form {
@@ -143,7 +156,8 @@ img {
   padding: 20px;
   z-index: 100;   /*makes sure this is alwyas in front */
   justify-self: flex-end;
-  background-color: var(--dark-color)
+  background-color: var(--dark-color);
+  animation: slideInFromRight 1s ease-in;
 }
 
 /* end tracy added */
@@ -151,6 +165,7 @@ img {
 /* Stats */
 .stats {
   padding-top: 100px; /* pushes the stats content down below the transformy skewy diagonal jawn */
+  animation: slideInFromBottom 1s ease-in;
 }
 
 .stats-heading.my-1 {
@@ -221,14 +236,97 @@ img {
 }
 
 /* Features */
-.features-head img {
+.features-head img, .docs-head img {
   width: 200px;
   justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card > i { /* styles the icons inside the feature cards */
+margin-right: 20px;
+}
+
+.features-main .grid {
+  padding: 0 30px;
+}
+
+.features-main .grid > *:first-child {
+  grid-column: 1 / span 3;
+}
+
+.features-main .grid > *:nth-child(2) { /* this allows us to choose any child by putting the number of the child in the parentheses */
+  grid-column: 1 / span 2;
+}
+
+/* Docs */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr; /* causes the 1st card to take half as much space as the second */
+  align-items: flex-start; /* pulls the docs-main cards up to the top of the container */
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid cadetblue;
+}
+
+.docs-main a:hover {
+  font-weight: bold;
 }
 
 /* Footer */
 .footer .social a {
   margin: 0 10px; /* this gives us space between our social media icons on the footer */
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* Tablets and under */
@@ -237,7 +335,9 @@ img {
   .showcase .grid,
   .stats .grid,
   .cli .grid,
-  .cloud .grid {
+  .cloud .grid,
+  .features-main .grid,
+  .docs-main .grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
   }
@@ -249,6 +349,7 @@ img {
   .showcase-text {
     text-align: center; /* looks better like this on small screens */
     margin-top: 40px; /*gives more space at the top */
+    animation: slideInFromTop 1s ease-in;
   }
 
   .showcase-form {
@@ -261,9 +362,27 @@ img {
     grid-row: 1;
   }
 
+  .features-head,
+  .features-sub-head,
+  .docs-head {
+    text-align: center;
+  }
+
+  .features-head img,
+  .features-sub-head img,
+  .docs-head img {
+    justify-self: center;
+  }
+
+  .features-main .grid > *:first-child,
+  .features-main .grid > *:nth-child(2) {
+    grid-column: 1;
+  }
+
   .showcase-pic { /*using this instead of the showcase-form thing from the original site */
     justify-self: center; /* justify-self is used on a specific grid item rather than on the whole grid or flex like justify-content */
     margin: auto;
+    animation: slideInFromBottom 1s ease-in;
   }
 }
 
@@ -353,8 +472,24 @@ img {
   color: #fff;
 }
 
-/* Text Sizes */
+/* Text Colors */
+.text-primary {
+  color: var(--primary-color);
+}
 
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-dark {
+  color: var(--dark-color);
+}
+
+.text-light {
+  color: var(--light-color);
+}
+
+/* Text Sizes */
 .lead { /* paragraphs etc */
   font-size: 20px;
 }
@@ -377,6 +512,28 @@ img {
 
 .text-center {
   text-align: center;
+}
+
+/* Alert */
+.alert {
+  background-color: var(--light-color);
+  padding: 10px 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.alert i {
+  margin-right: 10px;
+}
+
+.alert-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.alert-error {
+  background-color: var(--error-color);
+  color: white;
 }
 
 .flex {
