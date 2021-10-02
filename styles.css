@@ -2,12 +2,12 @@
 
 :root {   /* here we will define custom properties aka variables (global scope in this case) so we can use them anywhere -- like maybe a color we're going to use all over the project */
   --primary-color: #2E8B57;
-  --secondary-color: #1c3fa8;
+  --secondary-color: #1a5231;
   --dark-color: darkslategray;
-  --light-color: #f4f4f4;
-  --background-color: cadetblue;
+  --light-color: cadetblue;
   --success-color: #5cb85c;
   --error-color: #d9534f;
+  background-color: cadetblue;
 }
 
 * {
@@ -54,6 +54,12 @@ pre {
   padding: 10px;
 }
 
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
+
+/* Navbar */
 .navbar {
   background-color: var(--primary-color);
   color: #fff; /* text color -- it won't change yet for the links because we made those declarations for <a> tags but we'll fix that later */
@@ -160,12 +166,67 @@ pre {
   animation: slideInFromRight 1s ease-in;
 }
 
+.showcase-pic img {
+  border-radius: 10px;
+}
 /* end tracy added */
+
+.video {
+  margin: 20px;
+}
+
+/* History */
+.history {
+  background-color: var(--primary-color);
+  color: #fff;
+
+}
+
+.history .grid {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.history .grid > *:first-child {
+  grid-column: 1 / span 6;
+}
+
+.history .grid > *:nth-child(4) {
+  grid-column: 2 / span 6;
+}
+
+.history .grid > *:nth-child(5) {
+  grid-column: 1 / span 6;
+}
+
+.history .grid > *:nth-child(8) {
+  grid-column: 2 / span 6;
+}
+
+.history .grid > *:nth-child(9) {
+  grid-column: 1 / span 6;
+}
+
+.history .grid > *:nth-child(12) {
+  grid-column: 2 / span 6;
+}
+
+.history .grid > *:nth-child(13) {
+  grid-column: 1 / span 6;
+}
+
+.history .grid > *:nth-child(16) {
+  grid-column: 2 / span 6;
+}
+.history .grid > *:nth-child(17) {
+  grid-column: 1 / span 6;
+}
+
 
 /* Stats */
 .stats {
   padding-top: 100px; /* pushes the stats content down below the transformy skewy diagonal jawn */
   animation: slideInFromBottom 1s ease-in;
+  background-color: var(--light-color);
 }
 
 .stats-heading.my-1 {
@@ -337,7 +398,8 @@ margin-right: 20px;
   .cli .grid,
   .cloud .grid,
   .features-main .grid,
-  .docs-main .grid {
+  .docs-main,
+  .history .grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
   }

@@ -12,7 +12,7 @@
   <!-- Navbar -->
   <div class="navbar"> <!-- will hold logo (h1) and menu)-->
     <div class="container flex"> <!-- we wrap in a container so that on large screens the logo will stop growing along with it at a certain point--> <!-- the "utility class" of flex makes everything inside this container flexbox items-->
-      <h1 class="logo">Tracy Breen | Portfolio</h1>
+      <h1 class="logo">Tracy Breen</h1>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -38,7 +38,10 @@
 <!--
       <div class="showcase-form card">
         <h2>Request a Demo</h2>
-        <form>
+        <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden">
+            <label>Don't fill out this form if you're human: <input name="bot-field" /></label>
           <div class="form-control">
             <input type="text" name="name" placeholder="Name" required>
           </div>
@@ -156,10 +159,9 @@
         </ul>
       </nav>
       <div class="social">
-        <a href="#"><i class="fab fa-github fa-2x"></i></a> <!-- fab is for social media icons in font awesome (instead of fas) -->
-        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-        <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="https://github.com/tracybreen"><i class="fab fa-github fa-2x"></i></a> <!-- fab is for social media icons in font awesome (instead of fas) -->
+        <a href="https://www.linkedin.com/in/tracy-breen/"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="https://twitter.com/iamtracybreen"><i class="fab fa-twitter fa-2x"></i></a>
       </div>
     </div>
   </footer>
