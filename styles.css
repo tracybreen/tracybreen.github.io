@@ -138,24 +138,12 @@ img {
 .showcase-pic {
   position: relative; /* relative because we're going to want to add a top property */
   border-radius: 10px;
-  height: 320px;
-  width: 320px;
+  height: 350px;
+  width: 350px;
   padding: 20px;
   z-index: 100;   /*makes sure this is alwyas in front */
   justify-self: flex-end;
   background-color: var(--dark-color)
-}
-
-.radiusten {
-  border-radius: 10px;
-  position: relative;
-  height: 310;
-  width: 410;
-}
-
-.grid img {
-  border-radius: 10px;
-  margin-bottom: 100px; 
 }
 
 /* end tracy added */
@@ -232,9 +220,67 @@ img {
   transform: translateY(-15px); /* makes the little cards bounce up a tiny bit when you hover over them  ... but it's a little too abrupt so we'll go back up a few lines to .languages .card and add a transition ^^ */
 }
 
+/* Features */
+.features-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
 /* Footer */
 .footer .social a {
-  margin: 0 10px;
+  margin: 0 10px; /* this gives us space between our social media icons on the footer */
+}
+
+/* Tablets and under */
+@media(max-width: 768px) { /* makes adjustments for screens 768px and smaller  -- mainly we're going to stack everything so there aren't multiple columns */
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .showcase {
+    height: auto; /* we actually want this be be bigger on the smaller screen -- we want it to take up as much space as it needs -- so we're giving it an auto height, which will push other content out of the way so these things won't be on top of each other. */
+  }
+
+  .showcase-text {
+    text-align: center; /* looks better like this on small screens */
+    margin-top: 40px; /*gives more space at the top */
+  }
+
+  .showcase-form {
+    justify-self: center;
+    margin: auto;
+  }
+
+  .cli .grid > *:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .showcase-pic { /*using this instead of the showcase-form thing from the original site */
+    justify-self: center; /* justify-self is used on a specific grid item rather than on the whole grid or flex like justify-content */
+    margin: auto;
+  }
+}
+
+/* Mobile */
+@media(max-width: 500px) { /*makes adjustments for screens 500px and smaller */
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    flex-direction: column; /* makes the menu items go underneath the logo on a small vertical screen */
+  }
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0,0,0,0.1); /* gives those unordered list items a nice little transparent background */
+  }
 }
 
 /*Utilities*/
