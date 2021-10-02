@@ -179,7 +179,10 @@ pre {
 .history {
   background-color: var(--primary-color);
   color: #fff;
+}
 
+.history h2 {
+  padding-top: 20px;
 }
 
 .history .grid {
