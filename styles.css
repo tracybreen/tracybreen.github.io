@@ -94,6 +94,7 @@ pre {
 
 .showcase h1 {
   font-size: 40px;
+  margin: 10px 10px;
 }
 
 .showcase p {
@@ -169,7 +170,6 @@ pre {
 .showcase-pic img {
   border-radius: 10px;
 }
-/* end tracy added */
 
 .video {
   margin: 20px;
@@ -223,7 +223,46 @@ pre {
 .history .grid > *:nth-child(17) {
   grid-column: 1 / span 6;
 }
+.history .grid > *:nth-child(19) {
+  grid-column: 3 / span 3;
+}
 
+/* Contact */
+
+.contact-card {
+  align-content: center;
+}
+
+.contact-form.card {
+  position: relative;
+  height: auto;
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  margin: 50px auto;
+} 
+
+.contact-form h2 {
+  font-weight: bolder;
+}
+
+.contact-form .form-control { 
+margin: 20px 0; 
+}
+
+.contact-form input[type='text'],
+.contact-form input[type='email'] {
+  border: 0;
+  border-bottom: 1px solid cadetblue;
+  width: 100%;
+  background-color: darkslategray;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.showcase-form input:focus {
+  outline: none; /* this stops the weird outline from appearing when you click on one of these inputs */
+}
 
 /* Stats */
 .stats {
@@ -269,6 +308,13 @@ pre {
   grid-template-rows: repeat(3, 1fr); /* before we do anything further, we have 2 rows and 3 columns. all of the elements are on the first row but there is an extra row we can't see yet */ 
 }
 
+.darker {
+  font-weight: bolder;
+}
+
+.project {
+  margin: 15px 0;
+}
 /*
 .projects .grid > *:first-child {
   grid-column: 1 / span 2;
@@ -318,9 +364,10 @@ pre {
   color: var(--secondary-color);
 }
 
-.languages h2 {
-  font-style: ;
+/* .languages h2 {
+  font-weight: bolder;
 }
+*/
 
 .langlogo {
   width: 80px;
@@ -431,7 +478,8 @@ margin-right: 20px;
   .cloud .grid,
   .features-main .grid,
   .docs-main,
-  .history .grid {
+  .history .grid,
+  .projects .grid {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
   }
