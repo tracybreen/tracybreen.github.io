@@ -271,7 +271,7 @@ margin: 20px 0;
 
 /* Projects */
 .projects {
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 100px;
 }
 
@@ -501,6 +501,19 @@ margin-right: 20px;
     justify-self: center; /* justify-self is used on a specific grid item rather than on the whole grid or flex like justify-content */
     margin: auto;
     animation: slideInFromBottom 1s ease-in;
+  }
+
+  .projects h1,
+  .projects a {
+    text-align: center;
+  }
+
+
+  .repo-btn {
+    display: block;
+    margin: auto;
+    width: fit-content;
+    text-align: center;
   }
 }
 
