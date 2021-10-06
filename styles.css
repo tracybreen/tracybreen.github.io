@@ -251,7 +251,8 @@ margin: 20px 0;
 }
 
 .contact-form input[type='text'],
-.contact-form input[type='email'] {
+.contact-form input[type='email'],
+.contact-form textarea {
   border: 0;
   border-bottom: 1px solid cadetblue;
   width: 100%;
@@ -262,6 +263,14 @@ margin: 20px 0;
 
 .showcase-form input:focus {
   outline: none; /* this stops the weird outline from appearing when you click on one of these inputs */
+}
+
+.contact-form.card.lilguy {
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
 }
 
 /* Stats */
@@ -314,6 +323,10 @@ margin: 20px 0;
 
 .project {
   margin: 15px 0;
+}
+
+.lean-right {
+  text-align: right;
 }
 /*
 .projects .grid > *:first-child {
@@ -610,8 +623,13 @@ margin-right: 20px;
 .bg-secondary a,
 .btn-secondary a,
 .bg-dark a,
-.btn-dark a {
+.btn-dark a,
+.btn-repo a {
   color: #fff;
+}
+
+.btn-primary.center {
+  margin: 0 auto;
 }
 
 /* Text Colors */
